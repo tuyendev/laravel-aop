@@ -1,0 +1,90 @@
+{
+  "name": "bssd-ltd/laravel-aspect",
+  "description": "Aspect Oriented Programming library for laravel framework, and lumen",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "aspect",
+    "transaction",
+    "cache",
+    "logger"
+  ],
+  "authors": [
+    {
+      "name": "Yuuki Takezawa",
+      "email": "yuuki.takezawa@comnect.jp.net"
+    },
+    {
+      "name": "Tuyen",
+      "email": "tuyendev@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4|^8.0",
+    "illuminate/console": "^9.0",
+    "illuminate/filesystem": "^9.0",
+    "illuminate/support": "^9.0",
+    "illuminate/config": "^9.0",
+    "illuminate/contracts": "^9.0",
+    "illuminate/log": "^9.0",
+    "illuminate/database": "^9.0",
+    "illuminate/cache": "^9.0",
+    "illuminate/events": "^9.0",
+    "illuminate/bus": "^9.0",
+    "illuminate/queue": "^9.0",
+    "ray/aop": "^2.9",
+    "doctrine/annotations": "^1.11",
+    "nikic/php-parser": "^4.0",
+    "psr/log": "~1.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+    ,
+    "symfony/framework-bundle": "^5.2",
+    "symfony/console": "^5.2",
+    "phpunit/phpunit": "^9.3.3",
+    "mockery/mockery": "*",
+    "satooshi/php-coveralls": "*",
+    "sebastian/phpcpd": "*",
+    "phploc/phploc": "*",
+    "pdepend/pdepend" : "^2.2.4",
+    "phpmd/phpmd": "@stable",
+    "squizlabs/php_codesniffer": "~2.7",
+    "illuminate/encryption":"^8.0",
+    "vlucas/phpdotenv": "^5.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bssd\\LaravelAspect\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "files": [
+      "tests/AspectTestCase.php",
+      "tests/helper.php",
+      "tests/MockApplication.php",
+      "tests/ResolveMockInterface.php",
+      "tests/ResolveMockClass.php"
+    ],
+    "psr-4": {
+      "__Test\\": "tests/src"
+    }
+  },
+  "scripts": {
+    "quality-assurance": [
+      "./vendor/bin/phpunit",
+      "./vendor/bin/phpcpd src/",
+      "./vendor/bin/phploc src/ --log-xml=tests/logs/quality-assurance/phploc.xml"
+    ],
+    "phpcs": "./vendor/bin/phpcs src/ --report-full --report-source --standard=PSR2 --colors"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Ytake\\LaravelAspect\\AspectServiceProvider",
+        "Ytake\\LaravelAspect\\ConsoleServiceProvider"
+      ]
+    }
+  }
+}
